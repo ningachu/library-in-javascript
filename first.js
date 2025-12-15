@@ -48,26 +48,47 @@ const main = () => {
             const randomWelcomeMessage = randomMesso[Math.floor(Math.random() * randomMesso.length)];
             console.log(randomWelcomeMessage)
         };
-        
+        while (true){
+            let logInUsername = prompt(`Username: `);
+            const user = credentials.find(u => u.Username === logInUsername);
+
+            if (user){
+
+                const logInPswd = prompt(`Password: `);
+                if (user.Password === logInPswd){
+                    console.log(`logged in!`);
+                    randomMessage();
+
+            //call the funstion to be in the library here or break
+
+                } else{
+                    console.log(`invalid Password or Username!`)
+                }
+            }
+        };
     };
-    let logInUsername = prompt(`Username: `);
-    const user = credentials.find(u => u.Username === logInUsername);
 
-    if (user){
-        const logInPswd = prompt(`Password: `);
-        if (user.Password === logInPswd){
-            console.log(`logged in!`);
-            randomMessage();
-
-        //call the funstion to be in the library here 
-
-        } else{
-            console.log(`invalid Password or Username!`)
+    let eror = false;
+    while (eror === false){
+        try{
+            console.log(`1. SignUp`);
+            console.log(`2. LogIn`);
+            console.log(`3. Exit`);
+            console.log(`Choose one option (1 2 or 3).`);
+            let usersChoice = Number(prompt());
+            if (usersChoice === 1){
+                signUp();
+            } else if ( usersChoice == 2){
+                logIn();
+            } else if( usersChoice === 3){
+                break
+            } else {
+                console.log(`Invalid input!`)
+            }
+        } catch (error){
+            console.log(`unexpected error accured: `, error) 
+            break
         }
-    }
-
-    while (true){
-         
     }
 };
 main();
