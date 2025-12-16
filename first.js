@@ -4,11 +4,51 @@ const main = () => {
     const userName = [];
     const passWord = [];
     const credentials = [];
+    const booksInLibrary = ["1984", "Fathers of Nations", "The Samaritan", "Ego"];
     
     const welcomeTop = () => {
         console.log ( "##############################################################################################################################")        
         console.log ( "#################              welcome to sumerbot library system                       ######################################")    
         console.log ( "##############################################################################################################################")
+    };
+        const inTheLibrary = () => {
+        while (true){
+            console.log(`Welcome to Downtown Library`);
+            console.log(`prompt 1 to Show all books in the Library`);
+            console.log(`prompt 2 to Borrow a book by its Name`);
+            console.log(`prompt 3 to return a borrowed book`);
+            console.log(`prompt 4 to exit`);
+            libraryUserInput = Number(prompt());
+            if (libraryUserInput === 1){
+                console.log(`Available books: `)
+                booksInLibrary.forEach((book, index) => {
+                    console.log(`${index +1}. ${book} `);
+                })
+            } else if (libraryUserInput === 2){
+                while (true){
+                    console.log(`Input the name of the book u would want to borrow: `);
+                    bookToBorrow = prompt();
+                    if (booksInLibrary.includes(bookToBorrow)){
+                        booksInLibrary.splice(bookToBorrow);
+                        console.log(`${bookToBorrow} succesfully borrowed!`) ;
+                        break;
+                    } else{
+                        console.log(`Book unavailable in the library!`);
+                    }
+                }
+
+            } else if (libraryUserInput === 3){ 
+                console.log(`Input the name of the book u would want to return: `);
+                bookToReturn = prompt();
+                booksInLibrary.push(bookToReturn);
+                console.log(`${bookToReturn} succesfully returned!`) ;
+            } else if (libraryUserInput === 4){
+                console.log(`Exiting the library...`);
+                break;
+            } else {
+                console.log(`Invalid input!`)
+            } 
+        }
     };
 
     const signUp = () => {
@@ -58,9 +98,7 @@ const main = () => {
                 if (user.Password === logInPswd){
                     console.log(`logged in!`);
                     randomMessage();
-
-            //call the funstion to be in the library here or break
-
+                    inTheLibrary();
                 } else{
                     console.log(`invalid Password or Username!`)
                 }
