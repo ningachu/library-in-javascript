@@ -18,7 +18,7 @@ const main = () => {
             console.log(`prompt 2 to Borrow a book by its Name`);
             console.log(`prompt 3 to return a borrowed book`);
             console.log(`prompt 4 to exit`);
-            libraryUserInput = Number(prompt());
+            let libraryUserInput = Number(prompt());
             if (libraryUserInput === 1){
                 console.log(`Available books: `)
                 booksInLibrary.forEach((book, index) => {
@@ -39,7 +39,7 @@ const main = () => {
 
             } else if (libraryUserInput === 3){ 
                 console.log(`Input the name of the book u would want to return: `);
-                bookToReturn = prompt();
+                let bookToReturn = prompt();
                 booksInLibrary.push(bookToReturn);
                 console.log(`${bookToReturn} succesfully returned!`) ;
             } else if (libraryUserInput === 4){
@@ -64,7 +64,7 @@ const main = () => {
             }
         }
         while(true){
-            newUserpswd = prompt(`Password: `)
+            let newUserpswd = prompt(`Password: `)
             const confirmnewUserpswd = prompt(`Confirm password: `)
             if ( confirmnewUserpswd === newUserpswd && newUserpswd !== "" && newUserpswd.length >= 4 ){
                 console.log(`New account ${newUsername} is created.`)
